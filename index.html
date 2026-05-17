@@ -8,6 +8,12 @@
     <meta property="og:title" content="Eng. Mustafa Al-Qadi — Enterprise Architect &amp; HCI Platform Lead">
     <meta property="og:description" content="16+ years in infrastructure &amp; cloud — VMware VCF, Nutanix, Kubernetes. Knowledge bases, training courses, and enterprise architecture resources.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://mustafamalqadi.github.io/og-image.svg">
+    <meta property="og:url" content="https://mustafamalqadi.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Eng. Mustafa Al-Qadi — Enterprise Architect & HCI Platform Lead">
+    <meta name="twitter:description" content="16+ years in infrastructure & cloud — VMware VCF, Nutanix, Kubernetes.">
+    <meta name="twitter:image" content="https://mustafamalqadi.github.io/og-image.svg">
     <meta name="theme-color" content="#0a0e1a">
     <!-- #3: JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -59,7 +65,7 @@
             --glass-border: rgba(99,102,241,0.1);
         }
         *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
+        html{scroll-behavior:smooth;scroll-padding-top:70px}
         body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.7;min-height:100vh;overflow-x:hidden}
         body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle,rgba(99,102,241,0.08) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
 
@@ -307,6 +313,17 @@
         .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
         .reveal.visible{opacity:1;transform:translateY(0)}
 
+        /* #6: Hero staggered entrance */
+        .hero-stagger{opacity:0;transform:translateY(20px);animation:hero-enter .8s cubic-bezier(.4,0,.2,1) forwards}
+        @keyframes hero-enter{to{opacity:1;transform:translateY(0)}}
+        .hero-stagger-1{animation-delay:.15s}
+        .hero-stagger-2{animation-delay:.3s}
+        .hero-stagger-3{animation-delay:.45s}
+        .hero-stagger-4{animation-delay:.6s}
+        .hero-stagger-5{animation-delay:.75s}
+        .hero-stagger-6{animation-delay:.9s}
+        .hero-stagger-7{animation-delay:1.05s}
+
         /* Responsive */
         @media(max-width:768px){
             .hero{padding:4rem 1.5rem 3rem;min-height:auto}
@@ -390,24 +407,24 @@
     </div>
     <div class="hero-glow" id="heroGlow"></div>
     <div class="hero-content">
-        <div class="hero-avatar">MA<div class="status-dot"></div></div>
-        <div class="hero-label">Personal Portal</div>
-        <h1>Eng. Mustafa Al-Qadi</h1>
+        <div class="hero-avatar hero-stagger hero-stagger-1">MA<div class="status-dot"></div></div>
+        <div class="hero-label hero-stagger hero-stagger-2">Personal Portal</div>
+        <h1 class="hero-stagger hero-stagger-3">Eng. Mustafa Al-Qadi</h1>
 
         <!-- #8: Location + current role -->
-        <div class="hero-location">
+        <div class="hero-location hero-stagger hero-stagger-4">
             <span>Cloud Management Expert @ Orange Jordan</span>
             <span class="divider"></span>
             <span>Amman, Jordan</span>
         </div>
 
         <!-- #2: Typing animation role -->
-        <div class="role" id="typingRole"><span class="typing-cursor"></span></div>
+        <div class="role hero-stagger hero-stagger-4" id="typingRole"><span class="typing-cursor"></span></div>
 
-        <p class="bio">
+        <p class="bio hero-stagger hero-stagger-5">
             Building professional VMware troubleshooting references, instructor-led training courses, and enterprise architecture resources — bridging the gap between certification theory and production reality.
         </p>
-        <div class="hero-cta">
+        <div class="hero-cta hero-stagger hero-stagger-6">
             <a href="vmware-kbs/" class="btn btn-primary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                 VMware Knowledge Base
@@ -424,7 +441,7 @@
         </div>
 
         <!-- #1: Updated hero stats -->
-        <div class="hero-stats">
+        <div class="hero-stats hero-stagger hero-stagger-7">
             <div class="hero-stat reveal">
                 <div><span class="num" data-target="16">0</span><span class="num-suffix">+</span></div>
                 <div class="lbl">Years Experience</div>
@@ -802,13 +819,13 @@
             </div>
             <div><div class="c-label">Email</div><div class="c-value">alqadi.mustafa@outlook.com</div></div>
         </a>
-        <a href="https://www.linkedin.com/in/mustafa-al-qadi-18027120a" target="_blank" class="contact-card reveal" style="transition-delay:.1s">
+        <a href="https://www.linkedin.com/in/mustafa-al-qadi-18027120a" target="_blank" rel="noopener" class="contact-card reveal" style="transition-delay:.1s">
             <div class="c-icon" style="background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2);color:var(--cyan-light)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </div>
             <div><div class="c-label">LinkedIn</div><div class="c-value">Mustafa Al-Qadi</div></div>
         </a>
-        <a href="https://github.com/mustafamalqadi" target="_blank" class="contact-card reveal" style="transition-delay:.15s">
+        <a href="https://github.com/mustafamalqadi" target="_blank" rel="noopener" class="contact-card reveal" style="transition-delay:.15s">
             <div class="c-icon" style="background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);color:var(--purple-light)">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
             </div>
@@ -842,17 +859,17 @@
         <div class="footer-col">
             <h4>Connect</h4>
             <a href="mailto:alqadi.mustafa@outlook.com">Email</a>
-            <a href="https://www.linkedin.com/in/mustafa-al-qadi-18027120a" target="_blank">LinkedIn</a>
-            <a href="https://github.com/mustafamalqadi" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/mustafa-al-qadi-18027120a" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/mustafamalqadi" target="_blank" rel="noopener">GitHub</a>
         </div>
     </div>
     <div class="footer-bottom">
         <div class="footer-copy">&copy; 2026 Eng. Mustafa Al-Qadi — All rights reserved</div>
         <div class="footer-socials">
-            <a href="https://www.linkedin.com/in/mustafa-al-qadi-18027120a" target="_blank" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/mustafa-al-qadi-18027120a" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href="https://github.com/mustafamalqadi" target="_blank" aria-label="GitHub">
+            <a href="https://github.com/mustafamalqadi" target="_blank" rel="noopener" aria-label="GitHub">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
             </a>
         </div>
