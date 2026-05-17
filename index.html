@@ -9,6 +9,24 @@
     <meta property="og:description" content="16+ years in infrastructure &amp; cloud — VMware VCF, Nutanix, Kubernetes. Knowledge bases, training courses, and enterprise architecture resources.">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#0a0e1a">
+    <!-- #3: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mustafa Al-Qadi",
+      "jobTitle": "Cloud Management Expert & IT Automation Platform Lead",
+      "worksFor": { "@type": "Organization", "name": "Orange Jordan" },
+      "url": "https://mustafamalqadi.github.io",
+      "sameAs": [
+        "https://www.linkedin.com/in/mustafa-al-qadi-18027120a",
+        "https://github.com/mustafamalqadi"
+      ],
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "Yarmouk University" },
+      "knowsAbout": ["VMware Cloud Foundation", "vSAN", "NSX-T", "Kubernetes", "TOGAF", "Enterprise Architecture", "Nutanix", "Google Cloud Platform"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Amman", "addressCountry": "JO" }
+    }
+    </script>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0e1a'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='%236366f1' font-family='system-ui' font-weight='800' font-size='14'%3EMA%3C/text%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,8 +143,24 @@
         .section{max-width:1200px;margin:0 auto;padding:5rem 2rem;position:relative;z-index:1}
         .section-header{text-align:center;margin-bottom:3rem}
         .section-label{font-size:.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent-light);margin-bottom:.75rem}
-        .section-title{font-size:1.75rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem}
+        /* #4: Animated gradient on section titles */
+        .section-title{font-size:1.75rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;background:linear-gradient(90deg,var(--text-primary),var(--accent-light),var(--cyan-light),var(--text-primary));background-size:300% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:title-shimmer 6s ease-in-out infinite}
+        @keyframes title-shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
         .section-subtitle{font-size:.9rem;color:var(--text-secondary);font-weight:400}
+
+        /* #1: Section dividers */
+        .section-divider{width:100%;height:1px;position:relative;z-index:1;max-width:1200px;margin:0 auto;overflow:visible}
+        .section-divider::before{content:'';display:block;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border-light),var(--accent-glow),var(--border-light),transparent)}
+        .section-divider::after{content:'';position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent-glow)}
+
+        /* #5: Tech stack marquee */
+        .marquee-section{overflow:hidden;padding:1.5rem 0;position:relative;z-index:1}
+        .marquee-track{display:flex;gap:2.5rem;animation:marquee 30s linear infinite;width:max-content}
+        .marquee-track:hover{animation-play-state:paused}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        .marquee-item{font-size:.75rem;font-weight:600;color:var(--text-muted);white-space:nowrap;display:flex;align-items:center;gap:.4rem;padding:.35rem 1rem;border-radius:8px;background:rgba(30,41,59,.3);border:1px solid rgba(30,41,59,.5);transition:all .3s}
+        .marquee-item:hover{color:var(--accent-light);border-color:var(--border-light);background:rgba(99,102,241,.05)}
+        .marquee-item .dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
 
         /* About Me (#3) */
         .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
@@ -298,6 +332,17 @@
             .contact-grid{grid-template-columns:1fr}
         }
         :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+        /* #2: Prefers reduced motion */
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+            .mesh-orb{animation:none !important;opacity:.25}
+            .marquee-track{animation:none !important}
+            .typing-cursor{animation:none !important}
+            .hero-avatar{animation:none !important}
+            .status-dot{animation:none !important}
+            .scroll-progress{display:none}
+        }
     </style>
 </head>
 <body>
@@ -400,6 +445,9 @@
     </div>
 </header>
 
+<!-- Section divider -->
+<div class="section-divider"></div>
+
 <!-- ═══════════ ABOUT ME (#3) ═══════════ -->
 <section class="section" id="about">
     <div class="section-header reveal">
@@ -463,6 +511,9 @@
     </div>
 </section>
 
+<!-- Section divider -->
+<div class="section-divider"></div>
+
 <!-- ═══════════ PROJECTS ═══════════ -->
 <section class="section" id="projects">
     <div class="section-header reveal">
@@ -517,6 +568,41 @@
         </a>
     </div>
 </section>
+
+<!-- Section divider -->
+<div class="section-divider"></div>
+
+<!-- Tech stack marquee (#5) -->
+<div class="marquee-section">
+    <div class="marquee-track" id="marqueeTrack">
+        <span class="marquee-item"><span class="dot" style="background:var(--accent)"></span>VMware VCF</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--accent)"></span>vSAN</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--cyan)"></span>NSX-T</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--purple)"></span>vSphere</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--success)"></span>Nutanix</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--cyan)"></span>Kubernetes</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--success)"></span>Ansible / AWX</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--warning)"></span>Python</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--cyan)"></span>PowerShell</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--purple)"></span>TOGAF 10</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--warning)"></span>GCP</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--danger)"></span>Docker</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--cyan)"></span>Helm</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--success)"></span>Harbor</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--accent)"></span>Tanzu / TKG</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--purple)"></span>HashiCorp Vault</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--warning)"></span>NetBox</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--success)"></span>Gitea</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--danger)"></span>Prometheus</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--cyan)"></span>Grafana</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--purple)"></span>COBIT 2019</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--accent)"></span>SRM</span>
+        <span class="marquee-item"><span class="dot" style="background:var(--warning)"></span>Commvault</span>
+    </div>
+</div>
+
+<!-- Section divider -->
+<div class="section-divider"></div>
 
 <!-- ═══════════ CAREER TIMELINE (#4) ═══════════ -->
 <section class="section" id="career">
@@ -587,6 +673,9 @@
     </div>
 </section>
 
+<!-- Section divider -->
+<div class="section-divider"></div>
+
 <!-- ═══════════ EXPERTISE ═══════════ -->
 <section class="section" id="expertise">
     <div class="section-header reveal">
@@ -637,6 +726,9 @@
         </div>
     </div>
 </section>
+
+<!-- Section divider -->
+<div class="section-divider"></div>
 
 <!-- ═══════════ CERTIFICATIONS (#5) ═══════════ -->
 <section class="section" id="certs">
@@ -692,6 +784,9 @@
         </div>
     </div>
 </section>
+
+<!-- Section divider -->
+<div class="section-divider"></div>
 
 <!-- ═══════════ CONTACT (#9) ═══════════ -->
 <section class="section" id="contact">
@@ -890,6 +985,23 @@
         setTimeout(typeLoop, deleting ? 30 : (ci === current.length && !deleting ? 60 : 70));
     }
     setTimeout(typeLoop, 800);
+
+    /* #5: Duplicate marquee items for seamless loop */
+    var track = document.getElementById('marqueeTrack');
+    if (track) { track.innerHTML += track.innerHTML; }
+
+    /* #6: Parallax depth on hero mesh orbs */
+    var orbs = document.querySelectorAll('.mesh-orb');
+    if (orbs.length && window.matchMedia('(pointer: fine)').matches) {
+        var parallaxRates = [0.03, -0.02, 0.015];
+        window.addEventListener('scroll', function() {
+            var sy = window.scrollY;
+            orbs.forEach(function(orb, i) {
+                var rate = parallaxRates[i % parallaxRates.length];
+                orb.style.transform = 'translateY(' + (sy * rate) + 'px)';
+            });
+        }, { passive: true });
+    }
 })();
 </script>
 </body>
