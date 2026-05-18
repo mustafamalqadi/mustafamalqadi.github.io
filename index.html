@@ -193,6 +193,8 @@
         .project-card.kb:hover{border-color:rgba(99,102,241,.4)}
         .project-card.training::before{box-shadow:0 0 40px rgba(6,182,212,.2),0 8px 32px rgba(6,182,212,.15)}
         .project-card.training:hover{border-color:rgba(6,182,212,.3)}
+        .project-card.upgrade::before{box-shadow:0 0 40px rgba(63,185,80,.2),0 8px 32px rgba(63,185,80,.15)}
+        .project-card.upgrade:hover{border-color:rgba(63,185,80,.4)}
         .card-bar{height:3px;width:100%;position:relative;overflow:hidden;transition:height .3s}
         .project-card:hover .card-bar{height:4px}
         .card-bar::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent)}
@@ -200,18 +202,22 @@
         @keyframes bar-shimmer{0%{left:-100%}100%{left:100%}}
         .project-card.kb .card-bar{background:linear-gradient(90deg,var(--accent),var(--accent-light),var(--cyan));background-size:200% 100%}
         .project-card.training .card-bar{background:linear-gradient(90deg,var(--cyan),var(--cyan-light),var(--success));background-size:200% 100%}
+        .project-card.upgrade .card-bar{background:linear-gradient(90deg,var(--success),var(--success-light),#a3e635);background-size:200% 100%}
         .card-body{padding:2rem;flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
         .card-ribbon{position:absolute;top:16px;right:16px;z-index:2;font-size:.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#fff;padding:.3rem .8rem;border-radius:8px}
         .project-card.kb .card-ribbon{background:linear-gradient(135deg,var(--accent),var(--cyan));box-shadow:0 2px 12px rgba(99,102,241,.3)}
         .project-card.training .card-ribbon{background:linear-gradient(135deg,var(--cyan),var(--success));box-shadow:0 2px 12px rgba(6,182,212,.3)}
+        .project-card.upgrade .card-ribbon{background:linear-gradient(135deg,var(--success),#a3e635);box-shadow:0 2px 12px rgba(63,185,80,.3)}
         .card-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;transition:transform .3s}
         .project-card:hover .card-icon{transform:scale(1.12) rotate(-5deg)}
         .project-card:hover .card-icon svg{filter:drop-shadow(0 0 8px currentColor);transition:filter .4s}
         .project-card.kb .card-icon{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.2)}
         .project-card.training .card-icon{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.2)}
+        .project-card.upgrade .card-icon{background:rgba(63,185,80,.1);border:1px solid rgba(63,185,80,.2)}
         .card-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.4rem}
         .project-card.kb .card-label{color:var(--accent-light)}
         .project-card.training .card-label{color:var(--cyan-light)}
+        .project-card.upgrade .card-label{color:var(--success-light)}
         .card-title{font-size:1.2rem;font-weight:700;line-height:1.4;margin-bottom:.75rem;letter-spacing:-.01em;transition:letter-spacing .4s}
         .project-card:hover .card-title{letter-spacing:.01em}
         .card-desc{font-size:.84rem;color:var(--text-secondary);line-height:1.7;flex:1}
@@ -221,18 +227,21 @@
         .card-stat .lbl{color:var(--text-muted);font-weight:500}
         .project-card.kb .card-stat .num{color:var(--accent-light)}
         .project-card.training .card-stat .num{color:var(--cyan-light)}
+        .project-card.upgrade .card-stat .num{color:var(--success-light)}
         .card-footer{padding:1rem 2rem;border-top:1px solid rgba(30,41,59,.6);background:rgba(17,24,39,.5);display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
         .card-tags{display:flex;gap:.4rem;flex-wrap:wrap}
         .card-tag{font-size:.66rem;padding:.18rem .55rem;border-radius:6px;font-weight:500;transition:transform .3s,box-shadow .3s}
         .project-card:hover .card-tag{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.2)}
         .project-card.kb .card-tag{background:rgba(99,102,241,.08);color:var(--accent-light);border:1px solid rgba(99,102,241,.15)}
         .project-card.training .card-tag{background:rgba(6,182,212,.08);color:var(--cyan-light);border:1px solid rgba(6,182,212,.15)}
+        .project-card.upgrade .card-tag{background:rgba(63,185,80,.08);color:var(--success-light);border:1px solid rgba(63,185,80,.15)}
         .card-arrow{font-size:.82rem;font-weight:700;display:flex;align-items:center;gap:.3rem;transition:gap .3s;white-space:nowrap}
         .project-card:hover .card-arrow{gap:.7rem}
         .project-card:hover .card-arrow svg{animation:arrow-bounce .8s ease infinite}
         @keyframes arrow-bounce{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
         .project-card.kb .card-arrow{color:var(--accent-light)}
         .project-card.training .card-arrow{color:var(--cyan-light)}
+        .project-card.upgrade .card-arrow{color:var(--success-light)}
         .status-live{font-size:.7rem;font-weight:700;color:var(--success-light);padding:.25rem .8rem;border-radius:12px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);display:inline-flex;align-items:center;gap:.4rem}
         .status-live::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--success-light);box-shadow:0 0 8px var(--success);animation:pulse-glow 2s ease-in-out infinite}
 
@@ -561,7 +570,29 @@
                 <span class="card-arrow">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
         </a>
-        <a href="training-courses/" class="project-card training reveal" style="transition-delay:.2s">
+        <a href="https://mustafamalqadi.github.io/vmware-upgrade-path/" class="project-card upgrade reveal" style="transition-delay:.2s">
+            <div class="card-spotlight"></div>
+            <div class="card-ribbon">NEW</div>
+            <div class="card-bar"></div>
+            <div class="card-body">
+                <div class="card-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--success-light)"><path d="M8 22L14 6l6 16"/><path d="M10 16h8"/><circle cx="14" cy="6" r="2"/></svg>
+                </div>
+                <div class="card-label">VMware Upgrade Tool</div>
+                <div class="card-title">Upgrade Path<br>Planner</div>
+                <div class="card-desc">Interactive full-stack upgrade sequencer for VMware infrastructure. Calculates correct product order, intermediate version hops, pre-checks, known issues, and estimated downtime across vCenter, ESXi, vSAN, and NSX.</div>
+                <div class="card-stats">
+                    <div class="card-stat"><span class="num" data-target="4">0</span>&nbsp;<span class="lbl">Products</span></div>
+                    <div class="card-stat"><span class="num" data-target="71">0</span>&nbsp;<span class="lbl">Versions</span></div>
+                    <div class="card-stat"><span class="num" data-target="120">0</span><span class="lbl">+ Paths</span></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-tags"><span class="card-tag">vCenter</span><span class="card-tag">ESXi</span><span class="card-tag">vSAN</span><span class="card-tag">NSX</span></div>
+                <span class="card-arrow">Plan <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+        </a>
+        <a href="training-courses/" class="project-card training reveal" style="transition-delay:.3s">
             <div class="card-spotlight"></div>
             <div class="card-ribbon">8 COURSES</div>
             <div class="card-bar"></div>
@@ -855,6 +886,7 @@
             <a href="vmware-kbs/">VMware Knowledge Base</a>
             <a href="vmware-kbs/vsan-kb/">vSAN KB Dashboard</a>
             <a href="vmware-kbs/vsphere-kb/">vSphere KB Dashboard</a>
+            <a href="https://mustafamalqadi.github.io/vmware-upgrade-path/">Upgrade Path Planner</a>
             <a href="training-courses/">Training Courses</a>
         </div>
         <div class="footer-col">
