@@ -15,6 +15,7 @@
     <meta name="twitter:description" content="16+ years in infrastructure & cloud — VMware VCF, Nutanix, Kubernetes.">
     <meta name="twitter:image" content="https://mustafamalqadi.github.io/og-image.png">
     <meta name="theme-color" content="#0a0e1a">
+    <link rel="manifest" href="manifest.json">
     <!-- #3: JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -85,7 +86,38 @@
         [data-theme="light"] .section-dots a{border-color:var(--border)}
         .theme-toggle{background:var(--glass);border:1px solid var(--border);border-radius:8px;padding:.4rem .55rem;cursor:pointer;color:var(--text-secondary);font-size:1rem;line-height:1;transition:all .25s;display:flex;align-items:center;justify-content:center}
         .theme-toggle:hover{color:var(--accent-light);border-color:rgba(59,130,246,.3);transform:rotate(15deg)}
+
+        /* Command Palette */
+        .cmd-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:9000;display:none;align-items:flex-start;justify-content:center;padding-top:20vh}
+        .cmd-overlay.open{display:flex}
+        .cmd-box{background:var(--bg-secondary,#0d1225);border:1px solid var(--border);border-radius:16px;width:90%;max-width:540px;box-shadow:0 20px 60px rgba(0,0,0,.5);overflow:hidden;animation:cmd-in .2s ease}
+        @keyframes cmd-in{from{opacity:0;transform:translateY(-12px) scale(.97)}to{opacity:1;transform:none}}
+        .cmd-input{width:100%;background:none;border:none;border-bottom:1px solid var(--border);padding:1rem 1.2rem;font-size:1rem;color:var(--text-primary,#e8ecf4);outline:none;font-family:inherit}
+        .cmd-input::placeholder{color:var(--text-muted,#6b7a99)}
+        .cmd-results{max-height:320px;overflow-y:auto;padding:.5rem}
+        .cmd-item{display:flex;align-items:center;gap:.75rem;padding:.65rem 1rem;border-radius:8px;cursor:pointer;color:var(--text-secondary,#94a3b8);font-size:.85rem;transition:all .15s}
+        .cmd-item:hover,.cmd-item.active{background:rgba(59,130,246,.08);color:var(--accent-light,#60a5fa)}
+        .cmd-item svg{width:16px;height:16px;opacity:.6;flex-shrink:0}
+        .cmd-item .cmd-label{flex:1}
+        .cmd-item .cmd-hint{font-size:.7rem;color:var(--text-muted,#6b7a99)}
+
+        /* Micro-interactions: Ripple */
+        .ripple-btn{position:relative;overflow:hidden}
+        .ripple-btn .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.3);transform:scale(0);animation:ripple-anim .6s ease-out;pointer-events:none}
+        @keyframes ripple-anim{to{transform:scale(4);opacity:0}}
+        /* 3D Tilt cards */
+        .tilt-card{transition:transform .2s ease;will-change:transform}
+        .tilt-card:hover{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) scale(1.02)}
+
+        /* Share button */
+        .share-fab{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;border-radius:50%;background:var(--accent);color:#fff;border:none;cursor:pointer;font-size:1.2rem;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(59,130,246,.4);z-index:100;transition:transform .2s}
+        .share-fab:hover{transform:scale(1.1)}
         *{margin:0;padding:0;box-sizing:border-box}
+        @view-transition{navigation:auto}
+        ::view-transition-old(root){animation:fade-out .2s ease}
+        ::view-transition-new(root){animation:fade-in .3s ease}
+        @keyframes fade-out{to{opacity:0;transform:scale(.98)}}
+        @keyframes fade-in{from{opacity:0;transform:scale(1.02)}}
         html{scroll-behavior:smooth;scroll-padding-top:100px}
         body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg-primary);color:var(--text-primary);line-height:1.7;min-height:100vh;overflow-x:hidden}
         body::before{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-image:radial-gradient(circle,rgba(99,102,241,0.08) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0}
@@ -983,9 +1015,11 @@
 
     /* Theme toggle */
     var THEME_KEY = 'portfolio-theme';
+    var GLOBAL_KEY = 'global-theme';
     var themeBtn = document.getElementById('themeToggle');
     function loadTheme() {
-        if (localStorage.getItem(THEME_KEY) === 'light') {
+        var t = localStorage.getItem(THEME_KEY) || localStorage.getItem(GLOBAL_KEY);
+        if (t === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
             themeBtn.innerHTML = '&#9728;&#65039;';
         }
@@ -997,10 +1031,12 @@
             html.removeAttribute('data-theme');
             themeBtn.innerHTML = '&#127769;';
             localStorage.setItem(THEME_KEY, 'dark');
+            localStorage.setItem(GLOBAL_KEY, 'dark');
         } else {
             html.setAttribute('data-theme', 'light');
             themeBtn.innerHTML = '&#9728;&#65039;';
             localStorage.setItem(THEME_KEY, 'light');
+            localStorage.setItem(GLOBAL_KEY, 'light');
         }
     });
 
@@ -1158,6 +1194,136 @@
         }, { passive: true });
     }
 })();
+</script>
+
+<!-- Share Button -->
+<button class="share-fab" id="shareBtn" title="Share this page">&#128279;</button>
+<script>
+document.getElementById('shareBtn').addEventListener('click',function(){
+    var data={title:document.title,url:window.location.href};
+    if(navigator.share){navigator.share(data);}
+    else{navigator.clipboard.writeText(data.url).then(function(){alert('Link copied!');});}
+});
+</script>
+
+<!-- Easter egg: Konami code confetti -->
+<script>
+(function(){
+    var seq=[38,38,40,40,37,39,37,39,66,65],pos=0;
+    document.addEventListener('keydown',function(e){
+        if(e.keyCode===seq[pos]){pos++;if(pos===seq.length){pos=0;confetti();}}else{pos=0;}
+    });
+    function confetti(){
+        for(var i=0;i<80;i++){
+            var c=document.createElement('div');
+            c.style.cssText='position:fixed;top:-10px;left:'+Math.random()*100+'vw;width:8px;height:8px;background:hsl('+Math.random()*360+',90%,60%);border-radius:2px;z-index:99999;pointer-events:none;animation:confetti-fall '+(2+Math.random()*2)+'s ease-out forwards';
+            document.body.appendChild(c);
+            setTimeout(function(){c.remove();},4000);
+        }
+    }
+    var s=document.createElement('style');
+    s.textContent='@keyframes confetti-fall{to{transform:translateY(100vh) rotate(720deg);opacity:0}}';
+    document.head.appendChild(s);
+})();
+</script>
+
+<!-- Micro-interactions -->
+<script>
+(function(){
+    // Ripple effect on buttons
+    document.querySelectorAll('.btn, .cta-btn, .contact-link').forEach(function(btn){
+        btn.classList.add('ripple-btn');
+        btn.addEventListener('click',function(e){
+            var r=document.createElement('span');r.className='ripple';
+            var rect=btn.getBoundingClientRect();
+            var size=Math.max(rect.width,rect.height);
+            r.style.width=r.style.height=size+'px';
+            r.style.left=(e.clientX-rect.left-size/2)+'px';
+            r.style.top=(e.clientY-rect.top-size/2)+'px';
+            btn.appendChild(r);
+            setTimeout(function(){r.remove();},600);
+        });
+    });
+    // 3D tilt on project/cert cards
+    document.querySelectorAll('.project-card, .cert-card, .expertise-card').forEach(function(card){
+        card.classList.add('tilt-card');
+        card.addEventListener('mousemove',function(e){
+            var rect=card.getBoundingClientRect();
+            var x=(e.clientX-rect.left)/rect.width-.5;
+            var y=(e.clientY-rect.top)/rect.height-.5;
+            card.style.setProperty('--rx',(-y*8)+'deg');
+            card.style.setProperty('--ry',(x*8)+'deg');
+        });
+        card.addEventListener('mouseleave',function(){
+            card.style.setProperty('--rx','0deg');
+            card.style.setProperty('--ry','0deg');
+        });
+    });
+})();
+</script>
+
+<!-- Command Palette -->
+<div class="cmd-overlay" id="cmdOverlay">
+<div class="cmd-box">
+    <input class="cmd-input" id="cmdInput" placeholder="Search pages, tools, sections..." autocomplete="off">
+    <div class="cmd-results" id="cmdResults"></div>
+</div>
+</div>
+<script>
+(function(){
+    var items=[
+        {label:'Portfolio — Home',url:'https://mustafamalqadi.github.io/',hint:'Landing page',icon:'home'},
+        {label:'About Me',url:'#about',hint:'Portfolio section',icon:'user'},
+        {label:'Projects',url:'#projects',hint:'Portfolio section',icon:'code'},
+        {label:'Career Timeline',url:'#career',hint:'Portfolio section',icon:'clock'},
+        {label:'Expertise',url:'#expertise',hint:'Portfolio section',icon:'star'},
+        {label:'Certifications',url:'#certs',hint:'Portfolio section',icon:'award'},
+        {label:'Contact',url:'#contact',hint:'Portfolio section',icon:'mail'},
+        {label:'Knowledge Bases Hub',url:'https://mustafamalqadi.github.io/vmware-kbs/',hint:'VMware KBs',icon:'book'},
+        {label:'Training Courses',url:'https://mustafamalqadi.github.io/training-courses/',hint:'Arabic & English',icon:'graduation'},
+        {label:'Upgrade Path Planner',url:'https://mustafamalqadi.github.io/vmware-upgrade-path/',hint:'VMware tool',icon:'chart'},
+        {label:'License Calculator',url:'https://mustafamalqadi.github.io/vcf-license-calculator/',hint:'VCF cost tool',icon:'calc'},
+    ];
+    var overlay=document.getElementById('cmdOverlay'),input=document.getElementById('cmdInput'),results=document.getElementById('cmdResults');
+    var activeIdx=-1;
+    function open(){overlay.classList.add('open');input.value='';render('');input.focus();activeIdx=-1;}
+    function close(){overlay.classList.remove('open');}
+    function render(q){
+        var filtered=items.filter(function(i){return !q||i.label.toLowerCase().indexOf(q)!==-1||i.hint.toLowerCase().indexOf(q)!==-1;});
+        results.innerHTML=filtered.map(function(i,idx){
+            return '<div class="cmd-item'+(idx===activeIdx?' active':'')+'" data-url="'+i.url+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="cmd-label">'+i.label+'</span><span class="cmd-hint">'+i.hint+'</span></div>';
+        }).join('');
+    }
+    input.addEventListener('input',function(){activeIdx=-1;render(this.value.toLowerCase().trim());});
+    results.addEventListener('click',function(e){var el=e.target.closest('.cmd-item');if(el){close();window.location.href=el.dataset.url;}});
+    overlay.addEventListener('click',function(e){if(e.target===overlay)close();});
+    document.addEventListener('keydown',function(e){
+        if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();overlay.classList.contains('open')?close():open();}
+        if(e.key==='Escape'&&overlay.classList.contains('open'))close();
+        if(overlay.classList.contains('open')&&(e.key==='ArrowDown'||e.key==='ArrowUp')){
+            e.preventDefault();var els=results.querySelectorAll('.cmd-item');
+            if(e.key==='ArrowDown')activeIdx=Math.min(activeIdx+1,els.length-1);
+            else activeIdx=Math.max(activeIdx-1,0);
+            els.forEach(function(el,i){el.classList.toggle('active',i===activeIdx);});
+        }
+        if(e.key==='Enter'&&overlay.classList.contains('open')){
+            var active=results.querySelector('.cmd-item.active');
+            if(active){close();window.location.href=active.dataset.url;}
+        }
+    });
+})();
+</script>
+
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+<script>/* View Transitions API */
+if(document.startViewTransition){
+  document.querySelectorAll('.site-strip a:not(.current)').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();var url=a.href;
+      document.startViewTransition(function(){window.location.href=url;});
+    });
+  });
+}
 </script>
 </body>
 </html>
