@@ -157,7 +157,9 @@
         .nav-brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--text-primary)}
         .nav-brand .logo{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.72rem;color:#fff;transition:transform .3s}
         .nav-brand:hover .logo{transform:rotate(-5deg) scale(1.1)}
+        .nav-brand-text{display:flex;flex-direction:column}
         .nav-brand .name{font-size:.85rem;font-weight:600}
+        .nav-brand .title{font-size:.65rem;color:var(--text-muted);font-weight:400}
         .nav-links{display:flex;gap:1.25rem;align-items:center}
         .nav-links a{color:var(--text-muted);text-decoration:none;font-size:.8rem;font-weight:500;transition:color .2s;position:relative}
         .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--accent);transition:width .3s}
@@ -495,12 +497,16 @@
 <nav class="nav" id="topNav">
     <a href="./" class="nav-brand">
         <div class="logo">M.Q</div>
-        <span class="name">Eng. Mustafa Al-Qadi</span>
+        <div class="nav-brand-text">
+            <span class="name">Eng. Mustafa Al-Qadi</span>
+            <span class="title">Enterprise Architect &amp; Cloud Specialist</span>
+        </div>
     </a>
     <div class="hamburger" id="hamburger" role="button" aria-label="Toggle menu">
         <span></span><span></span><span></span>
     </div>
     <div class="nav-links" id="navLinks">
+        <button class="theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">&#127769;</button>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#career">Career</a>
@@ -508,7 +514,6 @@
         <a href="#certs">Certifications</a>
         <a href="#contact">Contact</a>
     </div>
-    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">&#127769;</button>
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
