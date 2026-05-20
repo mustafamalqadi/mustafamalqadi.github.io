@@ -1,4 +1,4 @@
-const CACHE = 'portfolio-v1';
+const CACHE = 'portfolio-v2';
 const ASSETS = ['/', '/index.html', '/og-image.png'];
 
 self.addEventListener('install', e => {
@@ -16,14 +16,12 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then(cached =>
-      cached || fetch(e.request).then(resp => {
-        if (resp.ok && resp.type === 'basic') {
-          const clone = resp.clone();
-          caches.open(CACHE).then(c => c.put(e.request, clone));
-        }
-        return resp;
-      })
-    ).catch(() => caches.match('/'))
+    fetch(e.request).then(resp => {
+      if (resp.ok && resp.type === 'basic') {
+        const clone = resp.clone();
+        caches.open(CACHE).then(c => c.put(e.request, clone));
+      }
+      return resp;
+    }).catch(() => caches.match(e.request).then(cached => cached || caches.match('/')))
   );
 });
