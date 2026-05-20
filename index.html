@@ -518,7 +518,7 @@
         <span></span><span></span><span></span>
     </div>
     <div class="nav-links" id="navLinks">
-        <button class="theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle theme">&#127769;</button>
+        <button class="theme-toggle" id="themeToggle" title="Toggle light/dark theme" aria-label="Toggle dark mode" aria-pressed="true">&#127769;</button>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#career">Career</a>
@@ -1053,6 +1053,7 @@
         if (t === 'light') {
             document.documentElement.setAttribute('data-theme', 'light');
             themeBtn.innerHTML = '&#9728;&#65039;';
+            themeBtn.setAttribute('aria-pressed', 'false');
         }
     }
     loadTheme();
@@ -1061,11 +1062,13 @@
         if (html.getAttribute('data-theme') === 'light') {
             html.removeAttribute('data-theme');
             themeBtn.innerHTML = '&#127769;';
+            themeBtn.setAttribute('aria-pressed', 'true');
             localStorage.setItem(THEME_KEY, 'dark');
             localStorage.setItem(GLOBAL_KEY, 'dark');
         } else {
             html.setAttribute('data-theme', 'light');
             themeBtn.innerHTML = '&#9728;&#65039;';
+            themeBtn.setAttribute('aria-pressed', 'false');
             localStorage.setItem(THEME_KEY, 'light');
             localStorage.setItem(GLOBAL_KEY, 'light');
         }
@@ -1157,7 +1160,8 @@
                     obs.unobserve(entry.target);
                     entry.target.querySelectorAll('.num[data-target]').forEach(function(num) {
                         var target = parseInt(num.getAttribute('data-target'), 10);
-                        num.textContent = '0';
+                        var current = parseInt(num.textContent, 10) || 0;
+                        if (current === target && target > 0) return;
                         var dur = 1200, start = performance.now();
                         (function tick(now) {
                             var p = Math.min((now - start) / dur, 1);
