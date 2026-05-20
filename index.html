@@ -293,7 +293,7 @@
         .project-card.kb .card-label{color:var(--accent-light)}
         .project-card.training .card-label{color:var(--cyan-light)}
         .project-card.upgrade .card-label{color:var(--success-light)}
-        .card-title{font-size:1.2rem;font-weight:700;line-height:1.4;margin-bottom:.75rem;letter-spacing:-.01em;transition:letter-spacing .4s}
+        .card-title{font-size:1.2rem;font-weight:700;line-height:1.4;margin:0 0 .75rem;letter-spacing:-.01em;transition:letter-spacing .4s}
         .project-card:hover .card-title{letter-spacing:.01em}
         .card-desc{font-size:.84rem;color:var(--text-secondary);line-height:1.7;flex:1}
         .card-stats{display:flex;gap:1.25rem;flex-wrap:wrap;padding-top:1.25rem;margin-top:1.25rem;border-top:1px solid rgba(30,41,59,.8)}
@@ -670,14 +670,14 @@
     <div class="project-grid">
         <a href="vmware-kbs/" class="project-card kb reveal" style="transition-delay:.1s">
             <div class="card-spotlight"></div>
-            <div class="card-ribbon">LIVE</div>
+            <span class="card-ribbon">LIVE</span>
             <div class="card-bar"></div>
             <div class="card-body">
                 <div class="card-icon">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--accent-light)"><rect x="2" y="6" width="24" height="16" rx="3"/><path d="M7 14h2m4 0h2m4 0h2"/><path d="M7 10h14M7 18h14"/><circle cx="21" cy="10" r="1" fill="currentColor"/></svg>
                 </div>
                 <div class="card-label">VMware Knowledge Base Portal</div>
-                <div class="card-title">VMware Fix &amp; Break<br>Knowledge Bases</div>
+                <h3 class="card-title">VMware Fix &amp; Break<br>Knowledge Bases</h3>
                 <div class="card-desc">Comprehensive troubleshooting reference for VMware products — vSAN (94 entries) and vSphere (80 entries) live, with NSX-T and VCF coming soon. Copy-ready esxcli commands, decision trees, cross-references, and recovery timelines.</div>
                 <div class="card-stats">
                     <div class="card-stat"><span class="num" data-target="174">174</span>&nbsp;<span class="lbl">KB Entries</span></div>
@@ -686,20 +686,20 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="card-tags"><span class="card-tag">vSAN</span><span class="card-tag">vSphere</span><span class="card-tag">Tanzu</span><span class="card-tag">NSX-T</span><span class="card-tag">VCF</span></div>
+                <div class="card-tags"><span class="card-tag">vSAN</span> <span class="card-tag">vSphere</span> <span class="card-tag">Tanzu</span> <span class="card-tag">NSX-T</span> <span class="card-tag">VCF</span></div>
                 <span class="card-arrow">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
         </a>
         <a href="https://mustafamalqadi.github.io/vmware-upgrade-path/" class="project-card upgrade reveal" style="transition-delay:.2s">
             <div class="card-spotlight"></div>
-            <div class="card-ribbon">NEW</div>
+            <span class="card-ribbon">NEW</span>
             <div class="card-bar"></div>
             <div class="card-body">
                 <div class="card-icon">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--success-light)"><path d="M8 22L14 6l6 16"/><path d="M10 16h8"/><circle cx="14" cy="6" r="2"/></svg>
                 </div>
                 <div class="card-label">VMware Upgrade Tool</div>
-                <div class="card-title">Upgrade Path<br>Planner</div>
+                <h3 class="card-title">Upgrade Path<br>Planner</h3>
                 <div class="card-desc">Interactive full-stack upgrade sequencer for VMware infrastructure. Calculates correct product order, intermediate version hops, interoperability checks, pre-checks, known issues, visual timeline, and PDF export across vCenter, ESXi, vSAN, NSX, and VCF.</div>
                 <div class="card-stats">
                     <div class="card-stat"><span class="num" data-target="5">5</span>&nbsp;<span class="lbl">Products</span></div>
@@ -708,20 +708,20 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="card-tags"><span class="card-tag">vCenter</span><span class="card-tag">ESXi</span><span class="card-tag">vSAN</span><span class="card-tag">NSX</span><span class="card-tag">VCF</span></div>
+                <div class="card-tags"><span class="card-tag">vCenter</span> <span class="card-tag">ESXi</span> <span class="card-tag">vSAN</span> <span class="card-tag">NSX</span> <span class="card-tag">VCF</span></div>
                 <span class="card-arrow">Plan <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
         </a>
         <a href="training-courses/" class="project-card training reveal" style="transition-delay:.3s">
             <div class="card-spotlight"></div>
-            <div class="card-ribbon">11 COURSES</div>
+            <span class="card-ribbon">11 COURSES</span>
             <div class="card-bar"></div>
             <div class="card-body">
                 <div class="card-icon">
                     <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--cyan-light)"><path d="M2 7h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2V7z"/><path d="M26 7h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7V7z"/></svg>
                 </div>
                 <div class="card-label">Professional Training Courses</div>
-                <div class="card-title">Enterprise Architecture<br>&amp; VMware VCF 9</div>
+                <h3 class="card-title">Enterprise Architecture<br>&amp; VMware VCF 9</h3>
                 <div class="card-desc">Instructor-led training courses with interactive modules, mock exams, and Arabic content — covering TOGAF 10, COBIT 2019, IASA BTABoK, and VMware Cloud Foundation 9 (Intro, Compute, Storage, Network, Architecture, Automate &amp; Operate, Build Manage &amp; Secure).</div>
                 <div class="card-stats">
                     <div class="card-stat"><span class="num" data-target="11">11</span>&nbsp;<span class="lbl">Courses</span></div>
@@ -730,7 +730,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="card-tags"><span class="card-tag">TOGAF</span><span class="card-tag">COBIT</span><span class="card-tag">BTABoK</span><span class="card-tag">VCF 9</span></div>
+                <div class="card-tags"><span class="card-tag">TOGAF</span> <span class="card-tag">COBIT</span> <span class="card-tag">BTABoK</span> <span class="card-tag">VCF 9</span></div>
                 <span class="card-arrow">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
         </a>
