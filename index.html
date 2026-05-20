@@ -474,7 +474,7 @@
 </head>
 <body>
 
-<a href="#about" class="skip-link">Skip to content</a>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <!-- Scroll progress bar -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -557,7 +557,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 Training Courses
             </a>
-            <a href="https://mustafamalqadi.github.io/vmware-upgrade-path/" class="btn btn-secondary">
+            <a href="/vmware-upgrade-path/" class="btn btn-secondary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
                 Upgrade Path Planner
             </a>
@@ -690,7 +690,7 @@
                 <span class="card-arrow">Explore <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
         </a>
-        <a href="https://mustafamalqadi.github.io/vmware-upgrade-path/" class="project-card upgrade reveal" style="transition-delay:.2s">
+        <a href="/vmware-upgrade-path/" class="project-card upgrade reveal" style="transition-delay:.2s">
             <div class="card-spotlight"></div>
             <span class="card-ribbon">NEW</span>
             <div class="card-bar"></div>
@@ -1008,7 +1008,7 @@
             <a href="vmware-kbs/">VMware Knowledge Base</a>
             <a href="vmware-kbs/vsan-kb/">vSAN KB Dashboard</a>
             <a href="vmware-kbs/vsphere-kb/">vSphere KB Dashboard</a>
-            <a href="https://mustafamalqadi.github.io/vmware-upgrade-path/">Upgrade Path Planner</a>
+            <a href="/vmware-upgrade-path/">Upgrade Path Planner</a>
             <a href="training-courses/">Training Courses</a>
         </div>
         <div class="footer-col">
@@ -1236,12 +1236,14 @@ window.addEventListener('scroll',function(){document.documentElement.style.setPr
 </script>
 
 <!-- Offline indicator -->
-<div class="offline-bar" id="offlineBar">You are offline — cached content is being shown</div>
+<div class="offline-bar" id="offlineBar" hidden>You are offline — cached content is being shown</div>
 <script>
 (function(){var bar=document.getElementById('offlineBar');
-window.addEventListener('offline',function(){bar.classList.add('show');});
-window.addEventListener('online',function(){bar.classList.remove('show');});
-if(!navigator.onLine)bar.classList.add('show');})();
+function show(){bar.hidden=false;bar.classList.add('show');}
+function hide(){bar.classList.remove('show');bar.hidden=true;}
+window.addEventListener('offline',show);
+window.addEventListener('online',hide);
+if(!navigator.onLine)show();})();
 </script>
 
 <!-- Share Button -->
@@ -1320,17 +1322,17 @@ document.getElementById('shareBtn').addEventListener('click',function(){
 <script>
 (function(){
     var items=[
-        {label:'Portfolio — Home',url:'https://mustafamalqadi.github.io/',hint:'Landing page',icon:'home'},
+        {label:'Portfolio — Home',url:'/',hint:'Landing page',icon:'home'},
         {label:'About Me',url:'#about',hint:'Portfolio section',icon:'user'},
         {label:'Projects',url:'#projects',hint:'Portfolio section',icon:'code'},
         {label:'Career Timeline',url:'#career',hint:'Portfolio section',icon:'clock'},
         {label:'Expertise',url:'#expertise',hint:'Portfolio section',icon:'star'},
         {label:'Certifications',url:'#certs',hint:'Portfolio section',icon:'award'},
         {label:'Contact',url:'#contact',hint:'Portfolio section',icon:'mail'},
-        {label:'Knowledge Bases Hub',url:'https://mustafamalqadi.github.io/vmware-kbs/',hint:'VMware KBs',icon:'book'},
-        {label:'Training Courses',url:'https://mustafamalqadi.github.io/training-courses/',hint:'Arabic & English',icon:'graduation'},
-        {label:'Upgrade Path Planner',url:'https://mustafamalqadi.github.io/vmware-upgrade-path/',hint:'VMware tool',icon:'chart'},
-        {label:'License Calculator',url:'https://mustafamalqadi.github.io/vcf-license-calculator/',hint:'VCF cost tool',icon:'calc'},
+        {label:'Knowledge Bases Hub',url:'/vmware-kbs/',hint:'VMware KBs',icon:'book'},
+        {label:'Training Courses',url:'/training-courses/',hint:'Arabic & English',icon:'graduation'},
+        {label:'Upgrade Path Planner',url:'/vmware-upgrade-path/',hint:'VMware tool',icon:'chart'},
+        {label:'License Calculator',url:'/vcf-license-calculator/',hint:'VCF cost tool',icon:'calc'},
     ];
     var overlay=document.getElementById('cmdOverlay'),input=document.getElementById('cmdInput'),results=document.getElementById('cmdResults');
     var activeIdx=-1;
