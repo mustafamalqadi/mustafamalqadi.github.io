@@ -196,6 +196,9 @@
         /* Enhancement #8: Location + current role */
         .hero-location{font-size:.78rem;color:var(--text-muted);margin-bottom:1.25rem;display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap}
         .hero-location .divider{width:4px;height:4px;border-radius:50%;background:var(--text-muted);opacity:.5}
+        .hero-role{color:var(--text-primary);font-weight:600;font-size:.85rem}
+        .hero-company{color:var(--accent-light);font-weight:500}
+        .hero-loc{font-size:.72rem;opacity:.7}
 
         .hero h1{font-size:3.2rem;font-weight:900;letter-spacing:-.03em;line-height:1.15;margin-bottom:.5rem;background:linear-gradient(135deg,#f1f5f9,var(--accent-light),var(--cyan-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
@@ -537,9 +540,11 @@
 
         <!-- #8: Location + current role -->
         <div class="hero-location hero-stagger hero-stagger-4">
-            <span>Cloud Management Expert @ Orange Jordan</span>
+            <span class="hero-role">Cloud Management Expert</span>
             <span class="divider"></span>
-            <span>Amman, Jordan</span>
+            <span class="hero-company">Orange Jordan</span>
+            <span class="divider"></span>
+            <span class="hero-loc">Amman, Jordan</span>
         </div>
 
         <!-- #2: Typing animation role -->
@@ -549,22 +554,21 @@
             Building professional VMware troubleshooting references, instructor-led training courses, and enterprise architecture resources — bridging the gap between certification theory and production reality.
         </p>
         <div class="hero-cta hero-stagger hero-stagger-6">
-            <a href="vmware-kbs/" class="btn btn-primary">
+            <a href="Cv/Mustafa_Al-Qadi_CV.docx" class="btn btn-primary" download>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download CV
+            </a>
+            <a href="vmware-kbs/" class="btn btn-secondary">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                 VMware Knowledge Base
             </a>
-            <a href="training-courses/" class="btn btn-secondary">
+            <a href="training-courses/" class="btn btn-outline">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 Training Courses
             </a>
-            <a href="/vmware-upgrade-path/" class="btn btn-secondary">
+            <a href="/vmware-upgrade-path/" class="btn btn-outline">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
                 Upgrade Path Planner
-            </a>
-            <!-- #10: Download CV button -->
-            <a href="Cv/Mustafa_Al-Qadi_CV.docx" class="btn btn-outline" download>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Download CV
             </a>
         </div>
 
