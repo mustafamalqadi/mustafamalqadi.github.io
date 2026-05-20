@@ -571,19 +571,19 @@
         <!-- #1: Updated hero stats -->
         <div class="hero-stats hero-stagger hero-stagger-7">
             <div class="hero-stat reveal">
-                <div><span class="num" data-target="16">0</span><span class="num-suffix">+</span></div>
+                <div><span class="num" data-target="16">16</span><span class="num-suffix">+</span></div>
                 <div class="lbl">Years Experience</div>
             </div>
             <div class="hero-stat reveal">
-                <div><span class="num" data-target="11">0</span><span class="num-suffix">+</span></div>
+                <div><span class="num" data-target="11">11</span><span class="num-suffix">+</span></div>
                 <div class="lbl">Certifications</div>
             </div>
             <div class="hero-stat reveal">
-                <div><span class="num" data-target="9">0</span><span class="num-suffix">+</span></div>
+                <div><span class="num" data-target="9">9</span><span class="num-suffix">+</span></div>
                 <div class="lbl">Years Leadership</div>
             </div>
             <div class="hero-stat reveal">
-                <div><span class="num" data-target="11">0</span></div>
+                <div><span class="num" data-target="11">11</span></div>
                 <div class="lbl">Training Courses</div>
             </div>
         </div>
@@ -680,9 +680,9 @@
                 <div class="card-title">VMware Fix &amp; Break<br>Knowledge Bases</div>
                 <div class="card-desc">Comprehensive troubleshooting reference for VMware products — vSAN (94 entries) and vSphere (80 entries) live, with NSX-T and VCF coming soon. Copy-ready esxcli commands, decision trees, cross-references, and recovery timelines.</div>
                 <div class="card-stats">
-                    <div class="card-stat"><span class="num" data-target="174">0</span>&nbsp;<span class="lbl">KB Entries</span></div>
-                    <div class="card-stat"><span class="num" data-target="15">0</span>&nbsp;<span class="lbl">Phases</span></div>
-                    <div class="card-stat"><span class="num" data-target="4">0</span>&nbsp;<span class="lbl">Products</span></div>
+                    <div class="card-stat"><span class="num" data-target="174">174</span>&nbsp;<span class="lbl">KB Entries</span></div>
+                    <div class="card-stat"><span class="num" data-target="15">15</span>&nbsp;<span class="lbl">Phases</span></div>
+                    <div class="card-stat"><span class="num" data-target="4">4</span>&nbsp;<span class="lbl">Products</span></div>
                 </div>
             </div>
             <div class="card-footer">
@@ -702,9 +702,9 @@
                 <div class="card-title">Upgrade Path<br>Planner</div>
                 <div class="card-desc">Interactive full-stack upgrade sequencer for VMware infrastructure. Calculates correct product order, intermediate version hops, interoperability checks, pre-checks, known issues, visual timeline, and PDF export across vCenter, ESXi, vSAN, NSX, and VCF.</div>
                 <div class="card-stats">
-                    <div class="card-stat"><span class="num" data-target="5">0</span>&nbsp;<span class="lbl">Products</span></div>
-                    <div class="card-stat"><span class="num" data-target="88">0</span>&nbsp;<span class="lbl">Versions</span></div>
-                    <div class="card-stat"><span class="num" data-target="120">0</span><span class="lbl">+ Paths</span></div>
+                    <div class="card-stat"><span class="num" data-target="5">5</span>&nbsp;<span class="lbl">Products</span></div>
+                    <div class="card-stat"><span class="num" data-target="88">88</span>&nbsp;<span class="lbl">Versions</span></div>
+                    <div class="card-stat"><span class="num" data-target="120">120</span><span class="lbl">+ Paths</span></div>
                 </div>
             </div>
             <div class="card-footer">
@@ -724,9 +724,9 @@
                 <div class="card-title">Enterprise Architecture<br>&amp; VMware VCF 9</div>
                 <div class="card-desc">Instructor-led training courses with interactive modules, mock exams, and Arabic content — covering TOGAF 10, COBIT 2019, IASA BTABoK, and VMware Cloud Foundation 9 (Intro, Compute, Storage, Network, Architecture, Automate &amp; Operate, Build Manage &amp; Secure).</div>
                 <div class="card-stats">
-                    <div class="card-stat"><span class="num" data-target="11">0</span>&nbsp;<span class="lbl">Courses</span></div>
-                    <div class="card-stat"><span class="num" data-target="997">0</span><span class="lbl">+ MCQs</span></div>
-                    <div class="card-stat"><span class="num" data-target="179">0</span><span class="lbl">+ Modules</span></div>
+                    <div class="card-stat"><span class="num" data-target="11">11</span>&nbsp;<span class="lbl">Courses</span></div>
+                    <div class="card-stat"><span class="num" data-target="997">997</span><span class="lbl">+ MCQs</span></div>
+                    <div class="card-stat"><span class="num" data-target="179">179</span><span class="lbl">+ Modules</span></div>
                 </div>
             </div>
             <div class="card-footer">
@@ -1153,6 +1153,7 @@
                     obs.unobserve(entry.target);
                     entry.target.querySelectorAll('.num[data-target]').forEach(function(num) {
                         var target = parseInt(num.getAttribute('data-target'), 10);
+                        num.textContent = '0';
                         var dur = 1200, start = performance.now();
                         (function tick(now) {
                             var p = Math.min((now - start) / dur, 1);
